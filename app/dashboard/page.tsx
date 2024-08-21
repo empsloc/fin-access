@@ -1,3 +1,4 @@
+
 import Hero from '@/components/sharedUI/Hero'
 import SideNav from '@/components/sharedUI/SideNav'
 import { AreaChartComponent } from './_components/AreaChart'
@@ -5,6 +6,7 @@ import { BarChartComponent } from './_components/BarChartComponet'
 import { PieChartComponent } from './_components/PieChartComponent'
 
 const Dashboard = () => {
+ 
   return (
     <div className='gap-5 grid md:grid-cols-3'>
          <div className="md:col-span-1 hidden md:block">
