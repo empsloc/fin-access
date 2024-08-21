@@ -34,7 +34,7 @@ function SideNav() {
   return (
     <div className="border shadow-md h-screen p-4 rounded-xl flex flex-col justify-between">
       <div className=''>
-      <Image alt="" src ={"logo.svg"} width={180} height={50}/>
+      <Image alt="" src ={"/logo.svg"} width={180} height={50}/>
     <hr className="my-5"></hr>
     {menuItems.map((menu,index)=>(
      <Link href={menu.path}> <h2 className={`flex items-center gap-3 text-md p-4 text-slate-500 hover:bg-secondary cursor-pointer rounded-lg ${path==menu.path&&'bg-secondary '}` }>
