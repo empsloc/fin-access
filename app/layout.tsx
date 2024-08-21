@@ -1,3 +1,8 @@
+import Footer from "@/components/sharedUI/Footer";
+import Navbar from "@/components/sharedUI/Navbar";
+import Wrapper from "@/components/sharedUI/Wrapper";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,8 +20,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <Wrapper>
+          <Navbar/>
+        {children}
+        <Footer/>
+        </Wrapper>
+        </ThemeProvider>
+        </body>
     </html>
+    </ClerkProvider>
   );
 }
