@@ -5,18 +5,18 @@ import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
 import { aggregateData } from "@/app/_services/Services"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
+    ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -38,7 +38,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function AreaChartComponent({allDataList}:any) {
+export function AreaChartFemale({allDataList}:any) {
   const newData = aggregateData(allDataList)
   return (
     <Card>
@@ -71,7 +71,7 @@ export function AreaChartComponent({allDataList}:any) {
               content={<ChartTooltipContent indicator="dot" />}
             />
             <Area
-              dataKey="male"
+              dataKey="female"
               type="natural"
               fill="var(--color-mobile)"
               fillOpacity={0.4}
@@ -93,7 +93,7 @@ export function AreaChartComponent({allDataList}:any) {
         <div className="flex w-full items-start gap-2 text-sm">
           <div className="grid gap-2">
             <div className="flex items-center gap-2 font-medium leading-none">
-              Amount being distributed among males <TrendingUp className="h-4 w-4" />
+              Amount being distributed among females <TrendingUp className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-2 leading-none text-muted-foreground">
               January - June 2024

@@ -3,20 +3,20 @@
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
-import { generateChartData } from "@/app/_services/Services"
+import { combineGenderAmounts } from "@/app/_services/Services"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
+    ChartConfig,
+    ChartContainer,
+    ChartTooltip,
+    ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -38,8 +38,8 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function BarChartComponent({allDataList}:any) {
-  const newData = generateChartData(allDataList)
+export function GenderBarChart({allDataList}:any) {
+  const newData = combineGenderAmounts(allDataList)
   console.log(newData)
   return (
   
@@ -56,7 +56,7 @@ export function BarChartComponent({allDataList}:any) {
           <BarChart accessibilityLayer data={newData}>
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="category"
+              dataKey="gender"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
@@ -73,10 +73,10 @@ export function BarChartComponent({allDataList}:any) {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 font-medium leading-none">
-          Category Possession <TrendingUp className="h-4 w-4" />
+          Gender Wise Distribution <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total amount being possessed by each category
+          Showing total amount being possessed by each gender
         </div>
       </CardFooter>
     </Card>

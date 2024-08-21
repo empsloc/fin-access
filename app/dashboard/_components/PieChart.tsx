@@ -4,7 +4,7 @@ import { TrendingUp } from "lucide-react"
 import * as React from "react"
 import { Label, Pie, PieChart } from "recharts"
 
-import { generatePieChartDataForCategories } from "@/app/_services/Services"
+import { generateAgeGroupData } from "@/app/_services/Services"
 import {
   Card,
   CardContent,
@@ -43,12 +43,12 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function PieChartComponent({allDataList}:any) {
+export function PieChart1({allDataList}:any) {
   const totalVisitors = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
   }, [])
   const categories = ["es_transportation", "es_food", "es_health"];
-  const newData = generatePieChartDataForCategories(allDataList, categories);
+  const newData = generateAgeGroupData(allDataList);
 
   console.log(newData)
 
@@ -57,7 +57,7 @@ export function PieChartComponent({allDataList}:any) {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Category Distribution</CardTitle>
+        <CardTitle>Age Distribution</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
@@ -72,8 +72,8 @@ export function PieChartComponent({allDataList}:any) {
             />
             <Pie
               data={newData}
-              dataKey='male'
-              nameKey="category"
+              dataKey='amount'
+              nameKey="agegroup"
               innerRadius={60}
             
               strokeWidth={5}
@@ -109,10 +109,11 @@ export function PieChartComponent({allDataList}:any) {
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
         <div className="flex items-center gap-2 font-medium leading-none">
-          Male representation <TrendingUp className="h-4 w-4" />
+          Age group possession <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total male present in each category
+          Showing total amount possessed by different age groups
+          
         </div>
       </CardFooter>
     </Card>
